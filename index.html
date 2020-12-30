@@ -23,6 +23,8 @@
             var big_padding = "13px";
             var big_font_size = "20";
             var big_height = "55px";
+            var big_body_font_size;
+            var big_footer_font_size;
             
             var small_padding = "3px";
             var small_font_size = "8";
@@ -32,13 +34,17 @@
                 big_padding = "23px";
                 big_font_size = "40";
                 big_body_font_size = "40";
+                big_footer_font_size = "37";
                 big_height = "150px";
             
                 small_padding = "3px";
                 small_font_size = "8";
                 small_height = "18px";
                 $("p").css("font-size", big_body_font_size);
-                $("p").css("line-height", "100%");
+                $("p").css("line-height", "110%");
+                $(".footer_text").css("font-size", big_footer_font_size);
+                $("#logo").width("200px");
+                $("#logo").height("200px");
             }
             $(".accordion_header").css("padding", big_padding);
             $(".accordion_header").css("font-size", big_font_size); 
@@ -53,6 +59,8 @@
                    $(".accordion_header").css("padding", big_padding);
                    $(".accordion_header").css("font-size", big_font_size); 
                    $(".accordion_header").css("height", big_height); 
+                   $(".footer_img").css("opacity", "1");
+                   $(".footer_text").css("opacity", "1");
                    $(this).removeClass("active");
                    console.log("big_padding=", big_padding);
                    }
@@ -65,7 +73,8 @@
                    $(this).css("padding", big_padding);
                    $(this).css("font-size", big_font_size); 
                    $(this).css("height",big_height);
-                   
+                   $(".footer_img").css("opacity", "0.1");
+                   $(".footer_text").css("opacity", "0.1");
                }
 			});
 		});
@@ -162,9 +171,9 @@ UPI மூலம் பணம் செலுத்தினால் ,  <a href
 </div>
 
 <center>
-<div class="footer_cpc footer_img">
-<img src="https://dl.dropboxusercontent.com/s/aubd7718hftk4es/council_image.jpg" height=70px width=70px alt="CPC"></img></div>
- <div class="footer_cpc footer_text"> ஈரோடு மாவட்ட நுகர்வோர் பாதுகாப்பு மையம்  </div>
+<div class="footer_cpc footer_img" style="opacity:1">
+<img src="https://dl.dropboxusercontent.com/s/aubd7718hftk4es/council_image.jpg" id="logo" style="height:72px; width:72px" alt="CPC"></img></div>
+ <div class="footer_cpc footer_text" style="font-size:22px;opacity:1;"> ஈரோடு மாவட்ட நுகர்வோர் பாதுகாப்பு மையம்  </div>
 </center>
 
 </body>
