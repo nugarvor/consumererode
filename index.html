@@ -12,28 +12,59 @@
     </script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
-		$(document).ready(function(){
+         
+		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            window.mobile_check = true;
+        }
+        else{
+            window.mobile_check = false;
+        }
+        $(document).ready(function(){
+            var big_padding = "13px";
+            var big_font_size = "20";
+            var big_height = "55px";
+            
+            var small_padding = "3px";
+            var small_font_size = "8";
+            var small_height = "18px";
+            if (window.mobile_check)
+            {
+                big_padding = "23px";
+                big_font_size = "40";
+                big_body_font_size = "40";
+                big_height = "150px";
+            
+                small_padding = "3px";
+                small_font_size = "8";
+                small_height = "18px";
+                $("p").css("font-size", big_body_font_size);
+                $("p").css("line-height", "100%");
+            }
+            $(".accordion_header").css("padding", big_padding);
+            $(".accordion_header").css("font-size", big_font_size); 
+            $(".accordion_header").css("height", big_height); 
 			$(".accordion_header").click(function(){
                var removeThis = false;
 			   if ($(this).hasClass("active"))
 			       removeThis=true; 
                $(".accordion_header").removeClass("active");
-               $(".accordion_header").css("padding", "10px");
-               $(".accordion_header").css("font-size", "15"); 
-               $(".accordion_header").css("height","50px"); 
+
                if (removeThis) {
-              
+                   $(".accordion_header").css("padding", big_padding);
+                   $(".accordion_header").css("font-size", big_font_size); 
+                   $(".accordion_header").css("height", big_height); 
                    $(this).removeClass("active");
-               }
+                   console.log("big_padding=", big_padding);
+                   }
                else 
                {
-                   $(".accordion_header").css("padding", "3px");
-                   $(".accordion_header").css("font-size", "10"); 
-                   $(".accordion_header").css("height","20px");
+                   $(".accordion_header").css("padding", small_padding);
+                   $(".accordion_header").css("font-size", small_font_size); 
+                   $(".accordion_header").css("height",small_height);
                    $(this).addClass("active");
-                   $(this).css("padding", "10px");
-                   $(this).css("font-size", "15"); 
-                   $(this).css("height","50px");
+                   $(this).css("padding", big_padding);
+                   $(this).css("font-size", big_font_size); 
+                   $(this).css("height",big_height);
                    
                }
 			});

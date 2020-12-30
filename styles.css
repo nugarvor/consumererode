@@ -54,20 +54,21 @@ body{
 .wrapper{
   width: 95%;
   margin: 20px auto 0;
-  font-size: 15;
+  font-size: 20;
   text-align: justify;
 }
 
 .wrapper .accordion_wrap .accordion_header{
   width: 100%;
-  height: 50px;
+  height: 55px;
   background: #fff;
-  padding: 10px;
+  padding: 13px;
   color: #39a098;
   font-weight: 700;
   border-bottom: 2px solid #39a098;
   position: relative;
   cursor: pointer;
+  text-align: left;
 }
 
 .wrapper .accordion_wrap:first-child .accordion_header{
@@ -118,11 +119,12 @@ body{
   transition: all 0.5s ease;
   background: #39a098;
   overflow: hidden;
+  text-align: justify;
 }
 
 .wrapper .accordion_wrap .accordion_body p{
-  padding: 15px;
-  font-size: 15px;
+  padding: 13px;
+  font-size: 20px;
   line-height: 22px;
   color: #fff;
 }
