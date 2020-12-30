@@ -18,8 +18,23 @@
 			   if ($(this).hasClass("active"))
 			       removeThis=true; 
                $(".accordion_header").removeClass("active");
-               if (removeThis) { $(this).removeClass("active");}
-               else {$(this).addClass("active");}
+               if (removeThis) {
+                   $(".accordion_header").css("padding", "10px");
+                   $(".accordion_header").css("font-size", "15"); 
+                   $(".accordion_header").css("height","50px");               
+                   $(this).removeClass("active");
+                   }
+               else 
+               {
+                   $(".accordion_header").css("padding", "3px");
+                   $(".accordion_header").css("font-size", "10"); 
+                   $(".accordion_header").css("height","20px");
+                   $(this).addClass("active");
+                   $(this).css("padding", "10px");
+                   $(this).css("font-size", "15"); 
+                   $(this).css("height","50px");
+                   
+               }
 			});
 		});
 	</script>
