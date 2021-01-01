@@ -2,6 +2,10 @@
         
         async function getPdf()
         {
+            
+
+            //FIXME: Still getting the Deprecated API warning.
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.5.207/build/pdf.worker.js';
             if (doc) doc.destroy();
             syncpoint = pdfjsLib.getDocument("https://consumererode.org/NKJan21.pdf").promise.then( function(pdf) {
             
@@ -40,9 +44,12 @@
                 rendered_page_num = page_num;
                 var pdf_canvas = document.getElementById("pdf_canvas");
                 var context = pdf_canvas.getContext("2d");
- 
+                if (window.mobile_check == true)
+                {
+                    scale=1.0;
+                } else scale=1;
                 doc.getPage(page_num).then(page => {
-                viewport = page.getViewport({scale:0.5,});
+                viewport = page.getViewport({scale:scale});
                 console.log("viewport width ", viewport.width, "viewport height ", viewport.height)
                 pdf_canvas.width = viewport.width;
                 pdf_canvas.height = viewport.height;
