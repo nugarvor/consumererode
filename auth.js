@@ -63,11 +63,18 @@ async function login_submit(e)
     e.preventDefault();
     console.log("login_submit user trying to login");
     auth.signInWithEmailAndPassword(document.getElementById('email').value, document.getElementById('password').value ).then(
-        ((user)=>
+        ((res)=>
         {
-            console.log("logged in - user", user);     firebase_update_file_list();
+            console.log("logged in - user", res); 
+            document.getElementById('ask_login').innerHTML="<strong> " + res['user']['email'] +" has logged in </strong>";         
+            firebase_update_file_list();
         }
-        ), (user)=> {console.log("failure - ", user); firebase_update_file_list();}
+        ), (user)=> {
+            console.log("failure - ", user); 
+            document.getElementById('ask_login').innerHTML="<a href=\"javascript:login('show');\"> <strong>சந்தாதாரர் Login</strong></a>";
+            firebase_update_file_list();
+            }
     )
+    login('hide');
 
 }

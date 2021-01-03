@@ -34,6 +34,7 @@
     <script src="page_scripts.js">
     </script>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
 <title>
  ஈரோடு மாவட்ட நுகர்வோர் பாதுகாப்பு மையம் (Erode District Consumer Protection Center)
 </title>
@@ -50,15 +51,26 @@
     <div class="t1"> <div class="t2">
       <center>
       
-      <p id="ask_login"><a href="javascript:login('show');"> <strong>சந்தாதாரர் Login</strong></a>
+      <p id="ask_login"><a href="javascript:login('show');"> <strong>சந்தாதாரர் Login</strong></a></p>
       <br> 
       <form id="form_select_file" >
         <select id="select_file" >
         
         </select>
       </form>
-                         
-       
+      
+      <div id="popupbox"> 
+      <form id="login_form" name="login" method="post">
+      <center>சந்தாதாரர் Login:</center><br>
+      <center>Email:</center>
+      <center><input id="email" size="14px" /></center>
+      <center>Password:</center>
+      <center><input id="password" type="password" size="14px" /></center>
+      <center><input type="submit" name="submit" width="14px" value="login" /></center>
+      </form>
+      <br />
+      
+      </div> 
       
       <canvas id="pdf_canvas"> </canvas>
 
@@ -78,18 +90,7 @@
       <img  src="loading.gif" id="Loading" width=80 height=80 style="float:center;position:absolute;display:inline;bottom:0px;left:38%;opacity:0.7;z-index:3;">  </img>
       </center>
       
-      <div id="popupbox"> 
-      <form id="login_form" name="login" method="post">
-      <center>சந்தாதாரர் Login:</center><br>
-      <center>Email:</center>
-      <center><input id="email" size="14" /></center>
-      <center>Password:</center>
-      <center><input id="password" type="password" size="14" /></center>
-      <center><input type="submit" name="submit" width="14px" value="login" /></center>
-      </form>
-      <br />
-      
-      </div> 
+
       
       
       <p><br>ஈரோடு மாவட்ட நுகர்வோர் பாதுகாப்பு மையம் 1991 ம் ஆண்டு முதல் <strong> நுகர்வோர் காவலன் </strong> மாத இதழை வெளியிட்டு வருகிறது . 
