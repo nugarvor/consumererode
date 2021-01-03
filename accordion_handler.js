@@ -17,11 +17,11 @@
             var small_height = "18px";
             if (window.mobile_check)
             {
-                big_padding = "23px";
-                big_font_size = "40";
-                big_body_font_size = "40";
-                big_footer_font_size = "37";
-                big_height = "150px";
+                big_padding = "16px";
+                big_font_size = "24";
+                big_body_font_size = "24";
+                big_footer_font_size = "24";
+                big_height = "113px";
             
                 small_padding = "3px";
                 small_font_size = "8";
