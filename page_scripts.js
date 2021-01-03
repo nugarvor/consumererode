@@ -2,16 +2,43 @@
         
         async function getPdf()
         {
-            
 
-            //FIXME: Still getting the Deprecated API warning.
+            
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.5.207/build/pdf.worker.js';
             if (doc) doc.destroy();
-            syncpoint = pdfjsLib.getDocument("https://consumererode.org/NKJan21.pdf").promise.then( function(pdf) {
+            
+            selection = document.getElementById("select_file");
+            if (selection.options.length == 0)
+            {
+                selection.options[0] = new Option("NKJan21.pdf","https://consumererode.org/NKJan21.pdf");
+                selection.selectedIndex = 0;
+            }
+            const URL = selection.options[selection.selectedIndex].value;
+            
+
+            fetch(URL, {method:'GET', mode:'no-cors'}).then(d=> {console.log(d);}, d=> {console.log(d);})
+            let d1;
+            dataLoaded = fetch(URL, {method:'GET'}).then(d=> d.arrayBuffer()).then(function(data) {d1=data;
+                return data;  });
+            
+            //FIXME: Use async better
+            await dataLoaded;
+            console.log(dataLoaded);
+            
+            
+            syncpoint = pdfjsLib.getDocument({data:d1}).promise.then( function(pdf) {
             
                 doc=pdf; 
                 });
             await syncpoint;
+        }
+        function selectionChange(e)
+        {
+            console.log("selection changed")
+            selection = document.getElementById("select_file");
+            if (URL == selection.options[selection.selectedIndex].value) return;
+            
+            pdf_render_init();
         }
         async function pdf_render_init()
         {
@@ -27,6 +54,7 @@
             document.getElementById("pdf_canvas").addEventListener('touchmove', handleTouchMove, false);
             document.getElementById("pdf_canvas").addEventListener('mousedown', handleTouchStart, false);        
             document.getElementById("pdf_canvas").addEventListener('mouseup', handleTouchMove, false);
+            document.getElementById("select_file").addEventListener('change', selectionChange, false);
             
             render_page(1);
             
@@ -57,10 +85,11 @@
                     context.clearRect(0, 0, pdf_canvas.width, pdf_canvas.height);
                     context.beginPath();
                 }
+                document.getElementById("Loading").style.visibility="visible";
                 page.render({
                     canvasContext:context,
                     viewport: viewport
-                }).promise.then(function() { render_complete = true;});
+                }).promise.then(function() { render_complete = true; document.getElementById("Loading").style.visibility="hidden";});
                 
                 
             
