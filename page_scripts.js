@@ -163,9 +163,9 @@
             }                       
         } else {
             if ( yDiff > 0 ) {
-                last_page_clicked();
+                //last_page_clicked();
             } else { 
-                first_page_clicked();
+                //first_page_clicked();
             }                                                                 
         }
         /* reset values */
