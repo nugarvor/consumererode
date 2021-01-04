@@ -56,7 +56,7 @@
                    $(".accordion_header").css("font-size", small_font_size); 
                    $(".accordion_header").css("height",small_height);
                    $(this).addClass("active");
-                   $(this).css("padding", big_padding);
+                   $(this).css("padding", big_padding/2);
                    $(this).css("font-size", big_font_size/2); 
                    $(this).css("height",big_height/2);
                    $(".footer_img").css("opacity", "0.1");
