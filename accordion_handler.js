@@ -58,7 +58,7 @@
                    $(this).addClass("active");
                    $(this).css("padding", big_padding);
                    $(this).css("font-size", big_font_size/2); 
-                   $(this).css("height",big_height);
+                   $(this).css("height",big_height/2);
                    $(".footer_img").css("opacity", "0.1");
                    $(".footer_text").css("opacity", "0.1");
                }
