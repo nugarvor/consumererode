@@ -46,7 +46,7 @@
                    $(".accordion_header").css("font-size", big_font_size); 
                    $(".accordion_header").css("height", big_height); 
 		   $(".accordion_body").css("height", "75%");
-		   $(".accordion_header").css("visibility", "visible");
+		   
                    $(".footer_img").css("opacity", "1");
                    $(".footer_text").css("opacity", "1");
                    $(this).removeClass("active");
@@ -57,13 +57,13 @@
                    $(".accordion_header").css("padding", small_padding);
                    $(".accordion_header").css("font-size", small_font_size); 
                    $(".accordion_header").css("height",small_height);
-		   $(".accordion_header").css("visibility", "hidden");
+		   
 		   $(".accordion_body").css("height", "95%");
                    $(this).addClass("active");
                    $(this).css("padding", big_padding/2);
                    $(this).css("font-size", big_font_size/2); 
                    $(this).css("height",big_height/2);
-		   $(this).css("visibility", "visible");
+		   
                    $(".footer_img").css("opacity", "0.1");
                    $(".footer_text").css("opacity", "0.1");
                }
