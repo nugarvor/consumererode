@@ -150,7 +150,7 @@ body{
 }
 
 .wrapper .accordion_wrap .accordion_header.active + .accordion_body{
-  height: 75%;
+  height: 90%;
 }
 
 
