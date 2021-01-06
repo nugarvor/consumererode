@@ -57,10 +57,21 @@
             });
             
         }
+        function show_swipe_help()
+        {
+            if ($('.accordion_1').children().hasClass('active'))
+            {
+            //.hasClass('active'));
+            
+                document.getElementById("swipe_help").style.visibility='visible';
+                setTimeout( (e) => {document.getElementById("swipe_help").style.visibility='hidden';}, 2000);
+            }
+        }
         
         async function pdf_render_init()
         {
             render_complete = true;
+            show_swipe_help();
             wait_getPdf = getPdf();
             await wait_getPdf;
             
