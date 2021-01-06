@@ -76,7 +76,7 @@
                 
                 doc.getPage(page_num).then(page => {
                 viewport = page.getViewport({scale:1.0});
-                scale=document.getElementById("accordion_body").clientWidth/viewport.width *90/100;
+                scale=document.body.clientWidth/viewport.width *90/100;
                 viewport = page.getViewport({scale:scale});
                 console.log("viewport width ", viewport.width, "viewport height ", viewport.height)
                 pdf_canvas.width = viewport.width;
