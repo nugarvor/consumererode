@@ -40,6 +40,21 @@
             
             pdf_render_init();
         }
+        function orientationChange(e)
+        {
+            if(window.innerHeight > window.innerWidth)
+            {
+                $('.footer_img').hide();
+                $('.footer_text').hide();
+            }
+            else
+            {
+                $('.footer_img').hide();
+                $('.footer_text').hide();
+            }
+            render_page(rendered_page_num);
+        }
+        
         async function pdf_render_init()
         {
             render_complete = true;
@@ -55,6 +70,7 @@
             document.getElementById("pdf_canvas").addEventListener('mousedown', handleTouchStart, false);        
             document.getElementById("pdf_canvas").addEventListener('mouseup', handleTouchMove, false);
             document.getElementById("select_file").addEventListener('change', selectionChange, false);
+            window.addEventListener("orientationchange", orientationChange, false);
             
             render_page(1);
             
