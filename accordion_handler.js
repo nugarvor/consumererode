@@ -45,7 +45,7 @@
                    $(".accordion_header").css("padding", big_padding);
                    $(".accordion_header").css("font-size", big_font_size); 
                    $(".accordion_header").css("height", big_height); 
-		   $(".accordion_body").css("height", "75%");
+		   
 		   
                    $(".footer_img").css("opacity", "1");
                    $(".footer_text").css("opacity", "1");
@@ -58,7 +58,7 @@
                    $(".accordion_header").css("font-size", small_font_size); 
                    $(".accordion_header").css("height",small_height);
 		   
-		   $(".accordion_body").css("height", "95%");
+		   
                    $(this).addClass("active");
                    $(this).css("padding", big_padding/2);
                    $(this).css("font-size", big_font_size/2); 
