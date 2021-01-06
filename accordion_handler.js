@@ -60,6 +60,7 @@
 		   
 		   
                    $(this).addClass("active");
+                   show_swipe_help();
                    $(this).css("padding", big_padding/2);
                    $(this).css("font-size", big_font_size/2); 
                    $(this).css("height",big_height/2);
