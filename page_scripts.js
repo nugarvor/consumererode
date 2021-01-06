@@ -44,13 +44,13 @@
         {
             if(window.innerHeight > window.innerWidth)
             {
-                $('.footer_img').show();
-                $('.footer_text').show();
+                $('.footer_img').hide();
+                $('.footer_text').hide();
             }
             else
             {
-                $('.footer_img').hide();
-                $('.footer_text').hide();
+                $('.footer_img').show();
+                $('.footer_text').show();
             }
             $(window).one('resize', function() {
                 render_page(rendered_page_num);
