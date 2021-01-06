@@ -72,10 +72,11 @@
                 rendered_page_num = page_num;
                 var pdf_canvas = document.getElementById("pdf_canvas");
                 var context = pdf_canvas.getContext("2d");
-                if (window.mobile_check == true)
-                {
-                    scale=0.65;
-                } else scale=1.3;
+                viewport = page.getViewport({scale:1.0});
+                //if (window.mobile_check == true)
+                //{
+                    scale=document.width()/viewport.width *95/100;
+                //} else scale=1.3;
                 doc.getPage(page_num).then(page => {
                 viewport = page.getViewport({scale:scale});
                 console.log("viewport width ", viewport.width, "viewport height ", viewport.height)
