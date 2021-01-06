@@ -74,8 +74,8 @@
                 var context = pdf_canvas.getContext("2d");
                 if (window.mobile_check == true)
                 {
-                    scale=0.65;
-                } else scale=1;
+                    scale=1.0;
+                } else scale=1.3;
                 doc.getPage(page_num).then(page => {
                 viewport = page.getViewport({scale:scale});
                 console.log("viewport width ", viewport.width, "viewport height ", viewport.height)
