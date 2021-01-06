@@ -27,6 +27,7 @@ async function  firebase_start()
             
             firebase.analytics();
             auth = firebase.auth();
+            auth.signOut().then( () => {console.log("signed out at start");});
             
             storage = firebase.storage();
             document.getElementById('login_form').addEventListener('submit', login_submit);
