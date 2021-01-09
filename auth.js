@@ -1,4 +1,4 @@
-
+let currentUser = null;
 function login(showhide){
 if(showhide == "show"){
     document.getElementById('popupbox').style.visibility="visible";
@@ -38,30 +38,44 @@ async function firebase_update_file_list()
 {
     console.log(auth.currentUser );  
     listref = storage.ref();
-    listref.listAll().then(
-    (res) => {
-        console.log(res);
-        selection = document.getElementById("select_file");
-        selection.innerHTML="";
-        selection.options[0] = new Option("NKJan21.pdf", "https://consumererode.org/NKJan21.pdf");
-        selection.selectedIndex = 0;
-        res.items.forEach(function(itemRef) {
-            console.log(itemRef);
-            console.log("fullPath - " , itemRef.fullPath);
+    updates_done = listref.listAll().then(
+        (res) => {
+            console.log(res);
+            selection = document.getElementById("select_file");
+            selection.innerHTML = "";
+            if (currentUser == null) {
+                selection.options[0] = new Option("Sample: நுகர்வோர் காவலன் மாத இதழ்(January 2021)", "https://consumererode.org/NKJan21.pdf");
+                selection.selectedIndex = 0;
+            }
+            res.items.forEach(function (itemRef) {
+                console.log(itemRef);
+                console.log("fullPath - ", itemRef.fullPath);
+
+
+                console.log("toString - ", itemRef.toString());
+                console.log("itemRef link", itemRef.getDownloadURL())
+                const CONFIG = {
+                    action: 'read',
+                    expires: Date.now() + 1000 * 60 * 10,
+                };
+                downloadURL = itemRef.getDownloadURL().then((url) => {
+                    selection.options[selection.options.length] = new Option(itemRef.fullPath, url);
+                    if (currentUser != null) selection.selectionIndex = selection.options.length;
+                    if (selection.options.length == 1) selectionChange(null);
+                }, (err) => { console.log("error firebase URL"); }
+                )
+            });
+
+
             
-            
-            console.log("toString - ", itemRef.toString());
-            console.log("itemRef link", itemRef.getDownloadURL())
-            downloadURL = itemRef.getDownloadURL().then((url)=> {selection.options[selection.options.length] = new Option(itemRef.fullPath, url);})
-            
-        })
-    }, (res) => {console.log('listAll returned failure', res);})
+        }, (res) => { console.log('listAll returned failure', res); });
 }
 
 
 async function login_submit(e)
 {
     e.preventDefault();
+    
     console.log("login_submit user trying to login");
     auth.signInWithEmailAndPassword(document.getElementById('email').value, document.getElementById('password').value ).then(
         ((res)=>
@@ -69,6 +83,7 @@ async function login_submit(e)
             console.log("logged in - user", res); 
             document.getElementById('ask_login').innerHTML="<strong> " + res['user']['email'] +" has logged in </strong>";         
             firebase_update_file_list();
+            currentUser = res['user'];
         }
         ), (user)=> {
             console.log("failure - ", user); 

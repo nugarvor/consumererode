@@ -1,4 +1,4 @@
-        var doc, rendered_page_num;
+﻿        var doc, rendered_page_num;
         
         async function getPdf()
         {
@@ -10,7 +10,7 @@
             selection = document.getElementById("select_file");
             if (selection.options.length == 0)
             {
-                selection.options[0] = new Option("NKJan21.pdf","https://consumererode.org/NKJan21.pdf");
+                selection.options[0] = new Option("Sample: நுகர்வோர் காவலன் மாத இதழ் (January 2021).pdf","https://consumererode.org/NKJan21.pdf");
                 selection.selectedIndex = 0;
             }
             const URL = selection.options[selection.selectedIndex].value;
@@ -64,7 +64,7 @@
             //.hasClass('active'));
             
                 document.getElementById("swipe_help").style.visibility='visible';
-                setTimeout( (e) => {document.getElementById("swipe_help").style.visibility='hidden';}, 2000);
+                setTimeout( (e) => {document.getElementById("swipe_help").style.visibility='hidden';}, 8000);
             }
         }
         
