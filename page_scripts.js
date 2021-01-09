@@ -103,34 +103,37 @@
                 var pdf_canvas = document.getElementById("pdf_canvas");
                 var context = pdf_canvas.getContext("2d");
                
-                
+            try {
                 doc.getPage(page_num).then(page => {
-                viewport = page.getViewport({scale:1.0});
-                scale=document.body.clientWidth/viewport.width *90/100;
-                viewport = page.getViewport({scale:scale});
-                console.log("viewport width ", viewport.width, "viewport height ", viewport.height)
-                pdf_canvas.width = viewport.width;
-                pdf_canvas.height = viewport.height;
-                if (context) {
-                    context.clearRect(0, 0, pdf_canvas.width, pdf_canvas.height);
-                    context.beginPath();
-                }
-                document.getElementById("Loading").style.visibility="visible";
-                page.render({
-                    canvasContext:context,
-                    viewport: viewport
-                }).promise.then(function() { render_complete = true; document.getElementById("Loading").style.visibility="hidden";});
-                
-                
-            
-                console.log("num pages = " + doc._pdfInfo.numPages)
-                page_Element = document.getElementById("page_num")
-                page_Element.value = page_num;
-                total_Element = document.getElementById("total_page")
-                total_Element.innerHTML = "of total:" + doc._pdfInfo.numPages;
-                
-                
-            });
+                    viewport = page.getViewport({ scale: 1.0 });
+                    scale = document.body.clientWidth / viewport.width * 90 / 100;
+                    viewport = page.getViewport({ scale: scale });
+                    console.log("viewport width ", viewport.width, "viewport height ", viewport.height)
+                    pdf_canvas.width = viewport.width;
+                    pdf_canvas.height = viewport.height;
+                    if (context) {
+                        context.clearRect(0, 0, pdf_canvas.width, pdf_canvas.height);
+                        context.beginPath();
+                    }
+                    document.getElementById("Loading").style.visibility = "visible";
+                    page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise.then(function () { render_complete = true; document.getElementById("Loading").style.visibility = "hidden"; });
+
+
+
+                    console.log("num pages = " + doc._pdfInfo.numPages)
+                    page_Element = document.getElementById("page_num")
+                    page_Element.value = page_num;
+                    total_Element = document.getElementById("total_page")
+                    total_Element.innerHTML = "of total:" + doc._pdfInfo.numPages;
+
+
+                }, err => { console.log(err); render_complete = true; return; });
+            } catch (e) {
+                render_complete = true; console.log(e); return;
+            }
 
         }
         
