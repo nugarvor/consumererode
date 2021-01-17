@@ -80,7 +80,8 @@ async function login_submit(e)
     auth.signInWithEmailAndPassword(document.getElementById('email').value, document.getElementById('password').value ).then(
         ((res)=>
         {
-            console.log("logged in - user", res); 
+            console.log("logged in - user", res);
+            document.getElementById("Loading").style.visibility = "visible";
             document.getElementById('ask_login').innerHTML="<strong> " + res['user']['email'] +" has logged in </strong>";         
             firebase_update_file_list();
             currentUser = res['user'];
